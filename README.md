@@ -1,92 +1,66 @@
-# Obsidian Sample Plugin
+# Obsidian Media Journal
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+**Media Journal** is an in-app recorder designed for Obsidian. It provides a lightweight, dockable workspace panel to record daily webcam reflections, screen captures, and voice memos directly into your vault notes.
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+Whether you are conducting daily study reviews, documenting practical labs, or keeping a quick audio diary, Media Journal streamlines the capture workflow without cluttering your system with third-party recording software.
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
+---
 
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open modal (simple)" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and outputs a Notice on click.
-- Registers a global interval which logs 'setInterval' to the console.
+## Features
 
-## First time developing plugins?
+- **Dockable & Movable Interface:** Lives inside Obsidian's workspace leaves. Place it in the right or left sidebar, dock it as a tab, or pop it out into an independent floating window.
+- **Multiple Capture Sources:**
+  - **Webcam:** Record video reflections using your device camera.
+  - **Screen Capture:** Capture your desktop or specific application windows alongside microphone narration.
+  - **Audio Only:** Record lightweight `.webm` voice notes to save storage space.
+- **Picture-in-Picture (PiP):** Pop out the live video preview to monitor your camera while writing or reading notes in full screen.
+- **Dynamic Quality & Size Optimization:** Switch between **Low**, **Normal**, and **High** quality profiles to aggressively limit bitrates and keep your vault file sizes small.
+- **Microphone Echo Prevention:** Built-in live audio mute toggle so you don't hear your own feedback during recording.
+- **Pause & Resume:** Built-in timer with full pause and resume control, producing a single combined file.
+- **Automatic Note Embedding:** Automatically inserts a markdown embed link (`![[recording.webm]]`) right where your cursor is placed in your active note.
+- **Configurable Save Directory:** Specify a custom folder path in settings (e.g., `Media/Daily Recordings`). The plugin creates the folder automatically if it does not exist.
 
-Quick starting guide for new plugin devs:
+---
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `src/main.ts` to `main.js`.
-- Make changes to `src/main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+## Installation
 
-## Releasing new releases
+### From Community Plugins (Once Approved)
+1. Open Obsidian **Settings**.
+2. Navigate to **Community plugins** and turn off **Safe mode**.
+3. Click **Browse** and search for `Media Journal`.
+4. Click **Install**, then **Enable**.
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+### Manual Installation
+1. Download the latest release assets (`main.js` and `manifest.json`) from the [Releases](https://github.com/your-username/obsidian-media-journal/releases) tab.
+2. Navigate to your vault folder: `<VaultFolder>/.obsidian/plugins/`.
+3. Create a new folder named `obsidian-media-journal`.
+4. Place `main.js` and `manifest.json` inside this folder.
+5. In Obsidian, go to **Settings > Community plugins** and enable **Media Journal**.
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+---
 
-## Adding your plugin to the community plugin list
+## How to Use
 
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+1. Click the **Camera** icon in the left ribbon to reveal the Media Recorder panel.
+2. Select your desired **Source** (*Webcam*, *Screen Capture*, or *Audio Only*).
+3. Select your preferred **Quality** setting (*Low*, *Normal*, or *High*).
+4. Click **Start Preview** to initialize the hardware stream.
+5. Click **Record** to begin capturing.
+6. Use **Pause** / **Resume** as needed.
+7. Click **Stop & Save**. The recording will save to your vault and automatically embed into your active note if the option is checked.
 
-## How to use
+---
 
-- Clone this repo.
-- Make sure your NodeJS is at least v18 (`node --version`).
-- `npm i` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
+## Settings
 
-## Manually installing the plugin
+- **Save Folder:** Define the vault folder where your media files are stored. Defaults to `Video Journals`.
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
+---
 
-## Improve code quality with eslint
+## Development
 
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code.
-- This project already has eslint preconfigured, you can invoke a check by running`npm run lint`
-- Together with a custom eslint [plugin](https://github.com/obsidianmd/eslint-plugin) for Obsidan specific code guidelines.
-- A GitHub action is preconfigured to automatically lint every commit on all branches.
+If you want to contribute or build the plugin locally:
 
-## Funding URL
-
-You can include funding URLs where people who use your plugin can financially support it.
-
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
-
-```json
-{
-	"fundingUrl": "https://buymeacoffee.com"
-}
-```
-
-If you have multiple URLs, you can also do:
-
-```json
-{
-	"fundingUrl": {
-		"Buy Me a Coffee": "https://buymeacoffee.com",
-		"GitHub Sponsor": "https://github.com/sponsors",
-		"Patreon": "https://www.patreon.com/"
-	}
-}
-```
-
-## API Documentation
-
-See https://docs.obsidian.md
+1. Clone this repository:
+   ```bash
+   git clone [https://github.com/Alaxanalax10/obsidian-media-journal](https://github.com/your-username/obsidian-media-journal.git)

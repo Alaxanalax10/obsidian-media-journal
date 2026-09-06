@@ -1,6 +1,6 @@
-# Obsidian Media Journal
+# Media Recorder
 
-**Media Journal** is an in-app recorder designed for Obsidian. It provides a lightweight, dockable workspace panel to record daily webcam reflections, screen captures, and voice memos directly into your vault notes.
+**Media Recorder** is an in-app recorder designed for Obsidian. It provides a lightweight, dockable workspace panel to record daily webcam reflections, screen captures, and voice memos directly into your vault notes.
 
 Whether you are conducting daily study reviews, documenting practical labs, or keeping a quick audio diary, Media Journal streamlines the capture workflow without cluttering your system with third-party recording software.
 
@@ -27,7 +27,7 @@ Whether you are conducting daily study reviews, documenting practical labs, or k
 ### From Community Plugins (Once Approved)
 1. Open Obsidian **Settings**.
 2. Navigate to **Community plugins** and turn off **Safe mode**.
-3. Click **Browse** and search for `Media Journal`.
+3. Click **Browse** and search for `Media Recorder`.
 4. Click **Install**, then **Enable**.
 
 ### Manual Installation

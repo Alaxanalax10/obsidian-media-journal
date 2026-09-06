@@ -63,4 +63,4 @@ If you want to contribute or build the plugin locally:
 
 1. Clone this repository:
    ```bash
-   git clone [https://github.com/Alaxanalax10/obsidian-media-journal](https://github.com/your-username/obsidian-media-journal.git)
+   git clone [https://github.com/Alaxanalax10/obsidian-media-journal](https://github.com/Alaxanalax10/obsidian-media-journal.git)

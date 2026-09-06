@@ -31,7 +31,7 @@ Whether you are conducting daily study reviews, documenting practical labs, or k
 4. Click **Install**, then **Enable**.
 
 ### Manual Installation
-1. Download the latest release assets (`main.js` and `manifest.json`) from the [Releases](https://github.com/your-username/obsidian-media-journal/releases) tab.
+1. Download the latest release assets (`main.js` and `manifest.json`) from the [Releases](https://github.com/Alaxanalax10/obsidian-media-journal/releases) tab.
 2. Navigate to your vault folder: `<VaultFolder>/.obsidian/plugins/`.
 3. Create a new folder named `obsidian-media-journal`.
 4. Place `main.js` and `manifest.json` inside this folder.

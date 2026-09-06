@@ -188,7 +188,8 @@ class VideoRecorderView extends ItemView {
         try {
             if (source === 'audio') {
                 this.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                this.videoElement.style.display = 'none';
+                // FIXED: Use setCssStyles instead of static style assignment
+                this.videoElement.setCssStyles({ display: 'none' });
             } else if (source === 'screen') {
                 const screenStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
                 const micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -196,11 +197,13 @@ class VideoRecorderView extends ItemView {
                 const combinedTracks = [...screenStream.getVideoTracks(), ...micStream.getAudioTracks()];
                 this.stream = new MediaStream(combinedTracks);
                 
-                this.videoElement.style.display = 'block';
+                // FIXED: Use setCssStyles instead of static style assignment
+                this.videoElement.setCssStyles({ display: 'block' });
                 this.videoElement.srcObject = this.stream;
             } else {
                 this.stream = await navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true });
-                this.videoElement.style.display = 'block';
+                // FIXED: Use setCssStyles instead of static style assignment
+                this.videoElement.setCssStyles({ display: 'block' });
                 this.videoElement.srcObject = this.stream;
             }
 
@@ -395,7 +398,9 @@ class VideoJournalSettingTab extends PluginSettingTab {
     display(): void {
         const {containerEl} = this;
         containerEl.empty();
-        containerEl.createEl('h2', {text: 'Video Journal Settings'});
+        
+        // FIXED: Use Obsidian's Setting API instead of creating raw h2 elements for UI consistency
+        new Setting(containerEl).setName('Video Journal Settings').setHeading();
 
         new Setting(containerEl)
             .setName('Save Folder')

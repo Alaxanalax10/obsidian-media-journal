@@ -401,7 +401,6 @@ class VideoJournalSettingTab extends PluginSettingTab {
         const {containerEl} = this;
         containerEl.empty();
         
-        // FIXED: Removed the word "Settings" to clear the lint error
         new Setting(containerEl).setName('Video Journal').setHeading();
 
         new Setting(containerEl)
@@ -413,6 +412,20 @@ class VideoJournalSettingTab extends PluginSettingTab {
                 .onChange(async (value) => {
                     this.plugin.settings.saveFolder = value;
                     await this.plugin.saveSettings();
+                }));
+
+        // --- NEW FEEDBACK SECTION ---
+        new Setting(containerEl).setName('Support').setHeading();
+
+        new Setting(containerEl)
+            .setName('Feedback & Bug Reports')
+            .setDesc('Found a bug or have a feature request? Let us know on GitHub!')
+            .addButton(button => button
+                .setButtonText('Open GitHub Issues')
+                .setCta() // Makes the button stand out visually
+                .onClick(() => {
+                    // Replace 'YourUsername' with your actual GitHub username or FlyNetX organization name
+                    window.open('https://github.com/Alaxanalax10/obsidian-media-journal/issues');
                 }));
     }
 

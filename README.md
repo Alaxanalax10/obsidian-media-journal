@@ -57,6 +57,14 @@ Whether you are conducting daily study reviews, documenting practical labs, or k
 
 ---
 
+## 💬 Feedback and Reviews
+
+Your feedback drives the development of Media Journal! Since Obsidian doesn't have a built-in rating system, I rely on the community to tell me what works and what needs improving.
+
+- **Found a bug?** [Open an Issue](https://github.com/Alaxanalax10/obsidian-media-journal/issues) so I can squash it.
+- **Have a feature idea?** [Start a Discussion](https://github.com/Alaxanalax10/obsidian-media-journal/discussions) to request new capabilities.
+- **Love the plugin?** Please consider starring the repository on GitHub! It helps others discover the tool.
+
 ## Development
 
 If you want to contribute or build the plugin locally:

@@ -13,6 +13,7 @@ const DEFAULT_SETTINGS: VideoJournalSettings = {
 
 export default class VideoJournalPlugin extends Plugin {
     settings!: VideoJournalSettings;
+    targetMarkdownView: MarkdownView | null = null;
 
     async onload() {
         await this.loadSettings();
@@ -35,6 +36,7 @@ export default class VideoJournalPlugin extends Plugin {
 
     async activateView() {
         const { workspace } = this.app;
+        this.targetMarkdownView = workspace.getActiveViewOfType(MarkdownView);
         
         // FIX: Added 'undefined' to the allowed types
         let leaf: WorkspaceLeaf | null | undefined = null; 
@@ -367,9 +369,10 @@ class VideoRecorderView extends ItemView {
             new Notice(`Saved to ${finalPath}!`);
 
             if (this.embedCheckbox.checked) {
-                const activeView = this.app.workspace.getActiveViewOfType(MarkdownView);
-                if (activeView) {
-                    const editor = activeView.editor;
+                const targetView = this.plugin.targetMarkdownView
+                    ?? this.app.workspace.getActiveViewOfType(MarkdownView);
+                if (targetView) {
+                    const editor = targetView.editor;
                     const cursor = editor.getCursor();
                     const embedText = `\n![[${finalPath}]]\n`;
                     editor.replaceRange(embedText, cursor);
